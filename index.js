@@ -1,9 +1,17 @@
 // dependencies
 const http = require('http');
+const url = require('url');
 
 // The server should respond to all request with a string
 const server = http.createServer((req, res) => {
-    res.end('Hello !');
+    // get the URL and parse it
+    const parsedUrl = url.parse(req.url, true);
+
+    // get the pathname
+    const pathname = parsedUrl.pathname;
+
+    //
+    res.end(`pathname: ${pathname}`);
 });
 
 // Start the server, and have it to listen on port 3000
