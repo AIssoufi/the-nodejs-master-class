@@ -13,8 +13,10 @@ const server = http.createServer((req, res) => {
     // get the method
     const method = req.method.toLowerCase();
 
-    //
-    res.end(`${method} ${pathname}`);
+    // get query string
+    const queryStringObject = parsedUrl.query;
+
+    res.end(`${method} ${pathname} ${JSON.stringify(queryStringObject)}`);
 });
 
 // Start the server, and have it to listen on port 3000
