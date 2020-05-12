@@ -10,13 +10,16 @@ const server = http.createServer((req, res) => {
     // get the pathname
     const pathname = parsedUrl.pathname;
 
-    // get the method
+    // get the HTTP method
     const method = req.method.toLowerCase();
 
     // get query string
     const queryStringObject = parsedUrl.query;
 
-    res.end(`${method} ${pathname} ${JSON.stringify(queryStringObject)}`);
+    // get the headers
+    const headers = req.headers;
+
+    res.end(`${method} ${pathname} ${JSON.stringify(queryStringObject)} ${JSON.stringify(headers)}`);
 });
 
 // Start the server, and have it to listen on port 3000
